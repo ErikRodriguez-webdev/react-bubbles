@@ -34,7 +34,7 @@ const ColorList = ({ colors, setTriggerGet }) => {
       });
   };
 
-  const deleteColor = (colors) => {
+  const deleteColor = () => {
     // make a delete request to delete this color
     axiosWithAuth()
       .delete(`/api/colors/${colorToEdit.id}`)
@@ -58,7 +58,7 @@ const ColorList = ({ colors, setTriggerGet }) => {
                 className="delete"
                 onClick={(e) => {
                   e.stopPropagation();
-                  deleteColor(color);
+                  deleteColor();
                 }}
               >
                 x
