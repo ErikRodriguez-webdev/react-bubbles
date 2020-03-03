@@ -102,7 +102,7 @@ function authenticator(req, res, next) {
 
 app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
-  if (username === "Lambda School" && password === "i<3Lambd4") {
+  if (username === "test" && password === "test") {
     req.loggedIn = true;
     setTimeout(() => {
       res.status(200).json({
@@ -138,7 +138,7 @@ app.put("/api/colors/:id", authenticator, (req, res) => {
       .status(422)
       .send("Make sure your request body has all the fields it needs");
   }
-  colors = colors.map(color => {
+  colors = colors.map((color) => {
     if (`${color.id}` === req.params.id) {
       return req.body;
     }
@@ -150,7 +150,7 @@ app.put("/api/colors/:id", authenticator, (req, res) => {
 app.delete("/api/colors/:id", authenticator, (req, res) => {
   if (!req.params.id)
     res.status(400).send("Your request is missing the color id");
-  colors = colors.filter(color => `${color.id}` !== req.params.id);
+  colors = colors.filter((color) => `${color.id}` !== req.params.id);
   res.status(202).send(req.params.id);
 });
 
